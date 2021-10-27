@@ -1,5 +1,5 @@
 {
-  "name": "first-node",
+  "name": "ceasar-cipher-cli-tool",
   "version": "1.0.0",
   "description": "first node.js project",
   "main": "index.js",
@@ -9,7 +9,7 @@
   "author": "Gleb Baykov",
   "license": "ISC",
   "dependencies": {
-    "commander": "^8.2.0",
+    "commander": "^8.3.0",
     "express": "^4.17.1",
     "inquirer": "^8.2.0"
   }
