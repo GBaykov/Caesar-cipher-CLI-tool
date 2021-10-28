@@ -1,51 +1,24 @@
 const { program } = require('commander');
 
 
-program.version('0.0.1');
-
 program
-.option('-i, --input [file]')
+.version('0.0.1')
+.option('-i, --input <file>')
+.option('-o, --output <file>')
+.option('-s, --shift <number>')
+.option('-a, --action <type>')
+.parse(process.argv);
 
-program
-.option('-o, --output [file]')
+const { action, shift, input, output } = program.opts();
 
-program
-.option('-s, --shift [number] [-number]')
-
-program
-.option('-a, --action [type]')
-
-program.parse(process.argv)
-
-const options = program.opts();
-const input = options.input
-const output = options.output
-const shift = (options.shift)
-const action = options.action
- //console.log(`options.shift ---- ${options.shift}`);
-
-function validator(shift, action) {
-    if(shift !== true) {
-        shift = Number(options.shift)
-    } else shift = 0;
-if (!shift ) {
-    shift = 0;
-    console.error('Error: shift params is missed')
-} else {
-    shift = Number(options.shift)
+const options = {
+  'action': action,
+  'shift': shift,
+  'input': input,
+  'output': output
 }
-if (typeof Number(shift) !== "number" || Math.floor(shift) !== shift ) {
-    
-    console.error('Error: shift params must be an integer value')
-}
-//
-if (!action || (action !== 'encode' && action !== 'decode')) {
-    
-    console.error(`Error: action params is missed or incorrect`)
-}
-console.log(`shift == ${shift}//////action == ${action}`)
-}
-validator(shift, action)
+
+
 
 
 //TO DO: 1. сделать 4 опции/ функцию возвращающую их (подразумеваем, что аргументы есть)
