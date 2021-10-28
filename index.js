@@ -1,12 +1,12 @@
 const { program } = require('commander');
-
+const validator = require('./src/validator');
 
 program
 .version('0.0.1')
-.option('-i, --input <file>')
-.option('-o, --output <file>')
-.option('-s, --shift <number>')
-.option('-a, --action <type>')
+.option('-i, --input <file>', 'input file')
+.option('-o, --output <file>', 'output file')
+.option('-s, --shift <number>', 'integer number for shift')
+.option('-a, --action <type>', 'action that can be "encode" or "decode"')
 .parse(process.argv);
 
 const { action, shift, input, output } = program.opts();
@@ -17,7 +17,7 @@ const options = {
   'input': input,
   'output': output
 }
-
+validator(options)
 
 
 
