@@ -1,7 +1,5 @@
-abcdefghijklmnopqrstuvwxyz
+aaa bb ddd wer ewrew
 ABCDEFGHIJKLMNOPQRSTUVWXYZ
-абвгдеёжзийклмнопрстуфхцчшщъыьэюя
-АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЬЫЬЭЮЯ
+абвгдеёжЗИЙКЛМНОпрстуфхцчшщъыьэюя
 This is secret. Message about "_" symbol!
 1234567890
-~!@#$%^&?(){}[]<>_-+*/\|:;

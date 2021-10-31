@@ -2,7 +2,7 @@ const { program } = require('commander');
 const validator = require('./src/validator');
 const fs = require('fs');
 const { pipeline } = require('stream');
-const WriteStream = require('./src/writeStream');
+const TransformStream = require('./src/transformStream');
 
 program
 .version('0.0.1')
@@ -34,7 +34,7 @@ const pipelineOutput =  output ? fs.createWriteStream(output, { flags: 'a' }) : 
 
 pipeline(
   pipelineInput,
-  new WriteStream(action, shift),
+  new TransformStream(action, shift),
   pipelineOutput,
   (err) => {
     if (err) {
