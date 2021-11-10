@@ -1,0 +1,2 @@
+streams = [];
+module.exports = streams;

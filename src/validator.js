@@ -24,26 +24,30 @@ function checkFile(file, purpose) {
 
 function validator(options, terminator) {
   let isError = false;
+  if(!options.config){
+    console.error('"config" is required option');
+    isError = true;
+  } 
   
-  if (options.action === undefined) {
-    console.error('"action" is required option');
-    isError = true;
-  }
+  // if (options.action === undefined) {
+  //   console.error('"action" is required option');
+  //   isError = true;
+  // }
   
-  if (options.action !== 'encode' && options.action !== 'decode') {
-    console.error('"action" must be "encode" or "decode"');
-    isError = true;
-  }
+  // if (options.action !== 'encode' && options.action !== 'decode') {
+  //   console.error('"action" must be "encode" or "decode"');
+  //   isError = true;
+  // }
 
-  if (options.shift === undefined) {
-    console.error('"shift" is required option');
-    isError = true;
-  }
+  // if (options.shift === undefined) {
+  //   console.error('"shift" is required option');
+  //   isError = true;
+  // }
 
-  if (!Number.isInteger(+options.shift)) {
-    console.error('"shift" must be an integer number');
-    isError = true;
-  }
+  // if (!Number.isInteger(+options.shift)) {
+  //   console.error('"shift" must be an integer number');
+  //   isError = true;
+  // }
 
   if (options.input && !checkFile(options.input, 'input file')) {
     isError = true;
