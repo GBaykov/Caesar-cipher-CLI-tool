@@ -4,14 +4,15 @@ const { TransformStreamRot } = require('./rotStream');
 
 function configGetter(config) {
     let configArr = config.split('-');
-    for(let elem of configArr) {
-       if(elem === 'C1') {
-           const stream = new TransformStreamCiepher()
-        transformStreams.push(stream)
+    for(let i = 0; i< configArr.length; i++) {
+      let action = configArr[i]
+        if(action[0] === 'C') {
+          const stream = new TransformStreamCiepher(action)
+          transformStreams.push(stream)
        }
             
-      else if(elem === 'R1') {
-        const stream = new TransformStreamRot()
+      else if(action[0] === 'R') {
+        const stream = new TransformStreamRot(action)
         transformStreams.push(stream)
       }
     }
