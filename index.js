@@ -39,7 +39,6 @@ const options = {
 validator(options, ()=>{
   process.exit(-1)
 });
-
 configGetter(options.config);
 
 
