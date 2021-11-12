@@ -10,20 +10,63 @@ const { configGetter } = require('./src/configGetter')
 
 
 
-// program
-// .version('0.0.1')
-// .option('-i, --input <file>', 'input file')
-// .option('-o, --output <file>', 'output file')
-// .option('-s, --shift <number>', 'integer number for shift')
-// .option('-a, --action <type>', 'action that can be "encode" or "decode"')
-// .parse(process.argv);
 
-// const { action, shift, input, output } = program.opts();
+const validArgument = ['-i','-o', '-c', '--config', '--input', '--output']
+
+function uniqValidation(Argv, options, terminator) {
+  let repeat = false;
+  let err = false;
+  //const val = validator(options, terminator);
+  const arr = [];
+
+  for(let flag = 2; flag < Argv.length; flag++) {
+  if(Argv[flag] === '-c' || Argv[flag] === '--config') {
+    if(!arr.includes('c')){
+      arr.push('c')
+    } else repeat = err = true; 
+  }
+  else if(Argv[flag] === '-i' || Argv[flag] === '--input') {
+    if(!arr.includes('i')){
+      arr.push('i')
+    } else repeat = err = true; 
+  }
+  else if(Argv[flag] === '-o' || Argv[flag] === '--output') {
+    if(!arr.includes('o')){
+      arr.push('o')
+    } else repeat = err = true; 
+  } 
+  //   else if(!validArgument.includes(Argv[flag]) & Argv[flag] !== options.config ) {
+  //   console.error(`"${Argv[flag]} is incorrect or excess option`);
+  //   err = true;
+  // }
+}
+  if(err) {
+    if(repeat) console.error('arguments should not be repeated')
+    err = true; 
+    terminator()
+  } else return true;
+}
+
+function validArg(Argv, terminator){
+  const bool = uniqValidation(process.argv, options, terminator);
+  if(bool) {
+    const val = validator(options, terminator);
+    for(let flag = 2; flag < Argv.length; flag++) {
+      if(!validArgument.includes(Argv[flag]) & Argv[flag] !== options.config ) {
+          console.error(`"${Argv[flag]} is incorrect or excess option`);
+          err = true;
+          terminator()
+        }
+      }
+  }
+  
+}
 
 function getValue(flag) {
   const flagIndex = process.argv.indexOf(flag);
   return flagIndex !== -1 ? process.argv[flagIndex + 1] : null;
 }
+
 
 const config =  getValue('--config') ? getValue('--config')  : getValue('-c');
 const input = getValue('-i') ?  getValue('-i') : getValue('--input');
@@ -34,11 +77,14 @@ const options = {
 'input': input,
 'output': output
 }
+validArg(process.argv,terminator)
+// uniqValidation(process.argv, options, terminator)
 
-
-validator(options, ()=>{
+function terminator(){
   process.exit(-1)
-});
+}
+
+
 configGetter(options.config);
 
 
