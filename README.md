@@ -34,7 +34,7 @@ For example, config "C1-C1-R0-A" means "encode by Caesar cipher => encode by Cae
 
 * `$ node index   -c "C1-C1-R0-A" -i "./input.txt" -o "./output.txt"
 
-* `$ node index   --config "C1-C0-A-R1-R0-A-R0-R0-C1-A" -i ./input.txt -o output.txt
+* `$ node index   --config "C1-C0-A-R1-R0-A-R0-R0-C1-A" -i "./input.txt" -o output.txt
 
 * `$ node index   -c A-A-A-R1-R0-R0-R0-C1-C1-A --input input.txt 
 
