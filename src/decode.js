@@ -2,6 +2,7 @@ const ALPHABET_LENGTH = 26;
 const LMAX = 'z'.charCodeAt();
 const CMAX = 'Z'.charCodeAt();
 
+//дешифратор для цезаря и ROT-8
 function decode(message, shift) {
     const result_arr = message.split('').map(letter => {
       if (letter >='a' && letter <= 'z')

@@ -4,6 +4,7 @@ const CMIN = 'A'.charCodeAt();
 const LMAX = 'z'.charCodeAt();
 const CMAX = 'Z'.charCodeAt();
 
+//шифратор для цезаря и ROT-8
 function encode(message, shift) {
     const result_arr = message.split('').map(letter => {
       if (letter.charCodeAt() >=LMIN && letter.charCodeAt() <= LMAX)

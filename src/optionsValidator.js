@@ -20,6 +20,7 @@ function checkFile(file, purpose) {
     return true;
   }
 
+  //проверяет правильность опций (инпут, аутпут и конфиг)
 function optionsValidator(options, terminator) {
     let isError = false;
     if(!options.config){

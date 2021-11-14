@@ -1,3 +1,5 @@
+//проверяет на отсутствие дублирования
+
 function uniqValidation(Argv, terminator) {
     let repeat = false;
     let err = false;

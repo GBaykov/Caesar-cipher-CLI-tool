@@ -24,11 +24,11 @@ const options = {
 
 function terminator(){
   process.exit(-1)
-}
+}  //завершает поцесс
 
 
-validator(process.argv, options, terminator)
-configGetter(options.config);
+validator(process.argv, options, terminator); //главный валидатор, использующий валидаторы поменьше
+configGetter(options.config); //принимает конфиг и отсылает соответствующий трансформ стрим в массив
 
 
 const pipelineInput = input ? fs.createReadStream(input) : process.stdin;
