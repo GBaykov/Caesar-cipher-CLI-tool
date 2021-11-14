@@ -1,2 +1,0 @@
-streams = [];
-module.exports = streams;
