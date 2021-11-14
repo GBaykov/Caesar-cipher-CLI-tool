@@ -52,7 +52,10 @@ function validArg(Argv, terminator){
   if(bool) {
     const val = validator(options, terminator);
     for(let flag = 2; flag < Argv.length; flag++) {
-      if(!validArgument.includes(Argv[flag]) & Argv[flag] !== options.config ) {
+      if(!validArgument.includes(Argv[flag]) & 
+          Argv[flag] !== options.config & 
+          Argv[flag] !== options.input & 
+          Argv[flag] !== options.output) {
           console.error(`"${Argv[flag]} is incorrect or excess option`);
           err = true;
           terminator()
@@ -78,7 +81,7 @@ const options = {
 'output': output
 }
 validArg(process.argv,terminator)
-// uniqValidation(process.argv, options, terminator)
+
 
 function terminator(){
   process.exit(-1)
